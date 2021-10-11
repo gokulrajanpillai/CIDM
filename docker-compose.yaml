@@ -19,3 +19,13 @@ services:
             - "./grafana/data:/var/lib/grafana"
         container_name: "grafana_ci"
         restart: always    
+    prometheus:
+        build:
+            context: ./prometheus
+            dockerfile: Dockerfile
+        ports:
+            - "7090:9090"
+        volumes:
+            - "./prometheus/data:/etc/prometheus"
+        container_name: "prometheus_ci"
+        restart: always
