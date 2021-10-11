@@ -9,3 +9,13 @@ services:
             - "./jenkins/data:/var/jenkins_home"
         container_name: "jenkins_ci"
         restart: always
+    grafana:
+        build:
+            context: ./grafana
+            dockerfile: Dockerfile
+        ports:
+            - "7300:3000"
+        volumes:
+            - "./grafana/data:/var/lib/grafana"
+        container_name: "grafana_ci"
+        restart: always    
